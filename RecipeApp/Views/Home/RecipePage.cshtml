@@ -1,0 +1,43 @@
+﻿@model RecipeApp.Models.RecipeModel
+@using RecipeApp.Models
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>This is a recipe page </h1>
+@{
+    int c = 0;
+
+    List<string> keys = new List<string>();
+    Helper helper = new Helper();
+    RecipeModel rm = new RecipeModel();
+    Dictionary<string, RecipeModel> data = helper.GetRecipeNames();
+
+    foreach (var item in data)
+    {
+        if (item.Key.Equals("Indian"))
+        {
+            <div>
+                <a href="">
+                <div style="height:200px; width:300px">
+                    <img src="https://cdn.pixabay.com/photo/2021/02/28/09/38/food-6056720_960_720.jpg" height="200" width="300"/>
+                </div>
+                <h2>Indian</h2>
+                    </a>
+            </div>
+        }
+        else if (item.Key.Equals("Italian"))
+        {
+            <div>
+                <a href="">
+                    <div style="height:200px; width:300px">
+                        <img src="https://cdn.pixabay.com/photo/2015/05/27/18/53/spaghetti-787048_960_720.jpg" height="200" width="300" />
+                    </div>
+                    <h2>Italian</h2>
+                </a>
+            </div>
+            }
+        }
+    }
