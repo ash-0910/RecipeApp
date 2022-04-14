@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RecipeApp
+namespace Testing_Library
 {
-    public class Helper
+    public class LibraryHelper
     {
-        FirebaseClient firebaseDatabase = new FirebaseClient("https://recipewebapp-2b062-default-rtdb.firebaseio.com/");
+       //FirebaseClient firebaseDatabase = new FirebaseClient("https://recipewebapp-2b062-default-rtdb.firebaseio.com/");
 
         IFirebaseClient client;
 

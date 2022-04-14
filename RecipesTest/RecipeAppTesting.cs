@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RecipesTest
 {
     [TestClass]
-    public class UnitTest1
+    public class RecipeAppTesting
     {
         [TestMethod]
         public void TestMethod1()

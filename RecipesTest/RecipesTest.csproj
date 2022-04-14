@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Firebase.Auth" Version="1.0.0" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.7" />
+    <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
@@ -15,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RecipeApp\RecipeApp.csproj" />
+    <ProjectReference Include="..\Testing-Library\Testing-Library.csproj" />
   </ItemGroup>
 
 </Project>
