@@ -27,7 +27,7 @@ namespace RecipeApp
             client = new FireSharp.FirebaseClient(config);
             FirebaseResponse res = client.Get(@"Recipes");
             Dictionary<string, RecipeModel> data = JsonConvert.DeserializeObject<Dictionary<string, RecipeModel>>(res.Body.ToString());
-            //PopulateData(data);
+            
             return data;
 
            /* var data = firebaseDatabase
@@ -39,14 +39,6 @@ namespace RecipeApp
               .PostAsync(new TextFile() { textMessage = message });*/
         }
 
-
-        void PopulateData(Dictionary<string, RecipeModel> data)
-        {
-            foreach(var item in data)
-            {
-                string value = item.Key + "\n";
-            }
-        }
 
 
 

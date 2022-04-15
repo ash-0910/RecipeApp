@@ -73,7 +73,6 @@ namespace RecipeApp.Controllers
             if (token != null)
             {
                 HttpContext.Session.SetString("_UserToken", token);
-
                 return RedirectToAction("RecipePage");
             }
             else

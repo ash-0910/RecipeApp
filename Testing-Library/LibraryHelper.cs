@@ -13,22 +13,27 @@ namespace Testing_Library
 {
     public class LibraryHelper
     {
-       //FirebaseClient firebaseDatabase = new FirebaseClient("https://recipewebapp-2b062-default-rtdb.firebaseio.com/");
 
         IFirebaseClient client;
+        bool result;
 
         IFirebaseConfig config = new FirebaseConfig()
         {
             BasePath = "https://recipewebapp-2b062-default-rtdb.firebaseio.com/"
         };
 
-        public Dictionary<string, RecipeModel> GetRecipeNames()
+        public bool GetRecipeNames()
         {
             client = new FireSharp.FirebaseClient(config);
             FirebaseResponse res = client.Get(@"Recipes");
             Dictionary<string, RecipeModel> data = JsonConvert.DeserializeObject<Dictionary<string, RecipeModel>>(res.Body.ToString());
-            //PopulateData(data);
-            return data;
+
+            if (data != null)
+            {
+                 result = true;
+            }
+
+            return result;
 
            /* var data = firebaseDatabase
                 .Child("Recipes")
@@ -37,15 +42,6 @@ namespace Testing_Library
             await firebaseDatabase
               .Child("Messages")
               .PostAsync(new TextFile() { textMessage = message });*/
-        }
-
-
-        void PopulateData(Dictionary<string, RecipeModel> data)
-        {
-            foreach(var item in data)
-            {
-                string value = item.Key + "\n";
-            }
         }
 
 
