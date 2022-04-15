@@ -64,24 +64,31 @@ namespace Testing_Library
         public async Task<bool> FirebaseRegistration()
         {
 
+
             for(int i=0; i< user.Count; i++)
             {
-                var registerauth = await auth.CreateUserWithEmailAndPasswordAsync(user[i].Email,user[i].Password);
 
-                string token = registerauth.FirebaseToken;
+                var accounts = await auth.GetLinkedAccountsAsync(user[i].Email);
 
-                if (token != null)
-                {
-                    result = true;
-                    break;
-                }
-                else
+                if (accounts.IsRegistered)
                 {
                     continue;
                 }
+                else
+                {
+                    var registerauth = await auth.CreateUserWithEmailAndPasswordAsync(user[i].Email, user[i].Password);
+
+                    string token = registerauth.FirebaseToken;
+
+                    if (token != null)
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+               
             }
 
-           
 
             return result;
         }
