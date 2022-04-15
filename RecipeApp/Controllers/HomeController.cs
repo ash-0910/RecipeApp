@@ -40,19 +40,28 @@ namespace RecipeApp.Controllers
         [HttpPost]
         public async Task<IActionResult> FirebaseRegistrationpage(Users users)
         {
-            
-            var registerauth  = await auth.CreateUserWithEmailAndPasswordAsync(users.Email, users.Password);
-          
-
-            string token = registerauth.FirebaseToken;
-          
-            if (token != null)
+            try
             {
 
-                return RedirectToAction("FirebaseLoginPage");
+                var registerauth = await auth.CreateUserWithEmailAndPasswordAsync(users.Email, users.Password);
+
+
+                string token = registerauth.FirebaseToken;
+
+
+                if (token != null)
+                {
+
+                    return RedirectToAction("FirebaseLoginPage");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -65,18 +74,27 @@ namespace RecipeApp.Controllers
         [HttpPost]
         public async Task<IActionResult> FirebaseLoginPage(Users users)
         {
-            
-            var loginauth = await auth.SignInWithEmailAndPasswordAsync(users.Email, users.Password);
-           
-            string token = loginauth.FirebaseToken;
+            try
+            {
 
-            if (token != null)
-            {
-                HttpContext.Session.SetString("_UserToken", token);
-                return RedirectToAction("RecipePage");
+                var loginauth = await auth.SignInWithEmailAndPasswordAsync(users.Email, users.Password);
+
+                string token = loginauth.FirebaseToken;
+
+                if (token != null)
+                {
+                    HttpContext.Session.SetString("_UserToken", token);
+
+                    return RedirectToAction("RecipePage");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
