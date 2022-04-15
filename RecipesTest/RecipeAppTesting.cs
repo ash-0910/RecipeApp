@@ -33,5 +33,14 @@ namespace RecipesTest
             Assert.IsTrue(result.Result);
 
         }
+
+        [TestMethod]
+        public void LoginTesting()
+        {
+            Task<bool> result = _libraryhelper.FirebaseLogin();
+
+            Assert.IsTrue(result.Result);
+
+        }
     }
 }

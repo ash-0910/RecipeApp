@@ -89,6 +89,41 @@ namespace Testing_Library
                
             }
 
+            return result;
+        }
+
+        public async Task<bool> FirebaseLogin()
+        {
+           
+
+            for (int i = 0; i < user.Count; i++)
+            {
+                var accounts = await auth.GetLinkedAccountsAsync(user[i].Email);
+
+                if (!accounts.IsRegistered)
+                {
+                    continue;
+                }
+                else
+                {
+                    var registerauth = await auth.SignInWithEmailAndPasswordAsync(user[i].Email, user[i].Password);
+
+                    string token = registerauth.FirebaseToken;
+
+                    if (token != null)
+                    {
+                        result = true;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+               
+  
+
+            }
 
             return result;
         }
