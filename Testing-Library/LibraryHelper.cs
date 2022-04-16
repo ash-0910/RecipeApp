@@ -52,13 +52,6 @@ namespace Testing_Library
 
             return result;
 
-           /* var data = firebaseDatabase
-                .Child("Recipes")
-                
-
-            await firebaseDatabase
-              .Child("Messages")
-              .PostAsync(new TextFile() { textMessage = message });*/
         }
 
         public async Task<bool> FirebaseRegistration()
