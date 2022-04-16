@@ -1,4 +1,6 @@
-﻿using Firebase.Database;
+﻿using Bometh.FirebaseDatabase;
+using Firebase.Database;
+using Firebase.Database.Query;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -25,19 +27,46 @@ namespace RecipeApp
         public Dictionary<string, RecipeModel> GetRecipeNames()
         {
             client = new FireSharp.FirebaseClient(config);
+
+
             FirebaseResponse res = client.Get(@"Recipes");
             Dictionary<string, RecipeModel> data = JsonConvert.DeserializeObject<Dictionary<string, RecipeModel>>(res.Body.ToString());
+
+        
             
             return data;
 
-           /* var data = firebaseDatabase
-                .Child("Recipes")
+        //    var response = firebaseDatabase.Child("Recipes");
+
                 
 
-            await firebaseDatabase
+           /* await firebaseDatabase
               .Child("Messages")
               .PostAsync(new TextFile() { textMessage = message });*/
         }
+
+        /*    public Dictionary<string, RecipeModel> GetSpecificRecipeTitle()
+            {
+                client = new FireSharp.FirebaseClient(config);
+                FirebaseResponse res = client.Get(@"Recipes");
+                Dictionary<string, RecipeModel> data = JsonConvert.DeserializeObject<Dictionary<string, RecipeModel>>(res.Body.ToString());
+
+
+
+                         //  var cq = firebaseDatabase.Child("Recipes").Child("Indian");
+
+
+                return data;
+
+                /* var data = firebaseDatabase
+                     .Child("Recipes")
+
+
+                 await firebaseDatabase
+                   .Child("Messages")
+                   .PostAsync(new TextFile() { textMessage = message });
+            }
+        */
 
 
 
