@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace RecipeApp
 {
@@ -68,6 +69,37 @@ namespace RecipeApp
             }
         */
 
+        public async Task<List<RecipeModel>> GetIndianRecipes()
+        {
+            var response = (await firebaseDatabase.Child("Recipes").Child("Indian").OnceAsync<RecipeModel>()).Select(item => new RecipeModel()
+            {
+                Title = item.Object.Title,
+                Ingredients = item.Object.Ingredients,
+                Instructions = item.Object.Instructions,
+                Image=item.Object.Image
+                
+
+            }).ToList();
+
+            return response;
+
+        }
+
+        public async Task<List<RecipeModel>> GetItalianRecipes()
+        {
+            var response = (await firebaseDatabase.Child("Recipes").Child("Italian").OnceAsync<RecipeModel>()).Select(item => new RecipeModel()
+            {
+                Title = item.Object.Title,
+                Ingredients = item.Object.Ingredients,
+                Instructions = item.Object.Instructions,
+                Image = item.Object.Image
+
+
+            }).ToList();
+
+            return response;
+
+        }
 
 
 

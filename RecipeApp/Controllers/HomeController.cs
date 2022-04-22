@@ -128,5 +128,17 @@ namespace RecipeApp.Controllers
                 return RedirectToAction("FirebaseLoginPage");
             }
         }
+
+        public IActionResult IndianRecipes()
+        {
+            
+            return View();
+        }
+
+        public IActionResult ItalianRecipes()
+        {
+            return View();
+        }
     }
+
 }

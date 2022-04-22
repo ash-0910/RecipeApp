@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeApp", "RecipeApp\Reci
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesTest", "RecipesTest\RecipesTest.csproj", "{6798254D-6BA2-4EC3-BB0D-5702EFD6D7FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing-Library", "Testing-Library\Testing-Library.csproj", "{A6FF4B14-6C6B-435B-97DC-BAA60B1AE79F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing-Library", "Testing-Library\Testing-Library.csproj", "{A6FF4B14-6C6B-435B-97DC-BAA60B1AE79F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

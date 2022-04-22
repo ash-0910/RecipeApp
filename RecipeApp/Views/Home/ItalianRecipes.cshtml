@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Italian Recipes</h1>
+
+@{
+
+    Helper helper = new Helper();
+
+    var data = helper.GetItalianRecipes().Result;
+
+    var response = data.FirstOrDefault();
+
+    int i = 0;
+
+
+    while (i < data.Count)
+    {
+        <div>
+            <a href="">
+                <img src="@data[i].Image" height="300" width="300" />
+                <h2>@data[i].Title</h2>
+            </a>
+        </div>
+            i++;
+        }
+}

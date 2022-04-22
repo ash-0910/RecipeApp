@@ -1,38 +1,61 @@
-﻿
+﻿@model RecipeApp.Models.RecipeModel
+@using RecipeApp.Models
 @{
 }
 
 
 <h1>Indian Recipes</h1>
-
+<div >
 @{
 
-   /* Helper helper = new Helper();
-    Dictionary<string, RecipeModel> data = helper.GetSpecificRecipeTitle();
+    Helper helper = new Helper();
 
-    foreach (var item in data)
+    var data = helper.GetIndianRecipes().Result;
+
+    var response = data.FirstOrDefault();
+
+    int i = 0;
+
+
+    while (i < data.Count)
     {
-        if (item.Key.Equals("Indian"))
-        {
-            <div>
-                <a href="">
-                    <div style="height:200px; width:300px">
-                     
-                    </div>
-                    <h2>Indian</h2>
-                </a>
-            </div>
-        }
-        else if (item.Key.Equals("Italian"))
-        {
-            <div>
-                <a href="">
-                    <div style="height:200px; width:300px">
-                       
-                    </div>
-                    <h2>Italian</h2>
-                </a>
-            </div>
-        }
-    }*/
+    <div>
+        <a href="">
+        <img src="@data[i].Image" height="300" width="300" />
+        <h2>@data[i].Title</h2>
+            </a>
+    </div>
+        i++;
+    }
+
+
+
+
+
+    /* foreach (var item in data)
+     {
+         if (item.Key.Equals("Indian"))
+         {
+             <div>
+                 <a href="">
+                     <div style="height:200px; width:300px">
+
+                     </div>
+                     <h2>Indian</h2>
+                 </a>
+             </div>
+         }
+         else if (item.Key.Equals("Italian"))
+         {
+             <div>
+                 <a href="">
+                     <div style="height:200px; width:300px">
+
+                     </div>
+                     <h2>Italian</h2>
+                 </a>
+             </div>
+         }
+     }*/
 }
+</div>
