@@ -139,6 +139,15 @@ namespace RecipeApp.Controllers
         {
             return View();
         }
+
+
+
+        [HttpPost]
+        public IActionResult RecipeDetail(string title)
+        {
+            ViewBag.Title = title;
+            return View();
+        }
     }
 
 }

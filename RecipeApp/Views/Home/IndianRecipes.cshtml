@@ -20,10 +20,14 @@
     while (i < data.Count)
     {
     <div>
-        <a href="">
-        <img src="@data[i].Image" height="300" width="300" />
-        <h2>@data[i].Title</h2>
-            </a>
+        @using (Html.BeginForm("RecipeDetail", "Home", FormMethod.Post))
+        {
+            
+            
+            <img src="@data[i].Image" height="300" width="300" />
+            <h2><input type="submit" value="@data[i].Title" />@Html.Value("Title") </h2>
+            
+        }
     </div>
         i++;
     }
