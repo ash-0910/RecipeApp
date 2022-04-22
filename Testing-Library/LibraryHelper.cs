@@ -50,7 +50,7 @@ namespace Testing_Library
 
             if (data != null)
             {
-                 result = true;
+                result = true;
             }
 
             return result;
@@ -61,7 +61,7 @@ namespace Testing_Library
         {
 
 
-            for(int i=0; i< user.Count; i++)
+            for (int i = 0; i < user.Count; i++)
             {
 
                 var accounts = await auth.GetLinkedAccountsAsync(user[i].Email);
@@ -82,7 +82,7 @@ namespace Testing_Library
                         break;
                     }
                 }
-               
+
             }
 
             return result;
@@ -90,7 +90,7 @@ namespace Testing_Library
 
         public async Task<bool> FirebaseLogin()
         {
-           
+
 
             for (int i = 0; i < user.Count; i++)
             {
@@ -116,8 +116,8 @@ namespace Testing_Library
                         continue;
                     }
                 }
-               
-  
+
+
 
             }
 
@@ -138,7 +138,7 @@ namespace Testing_Library
 
             }).ToList();
 
-            if(response.Count > 0)
+            if (response.Count > 0)
             {
                 result = true;
             }
@@ -151,5 +151,33 @@ namespace Testing_Library
 
 
         }
+
+        public async Task<bool> GetItalianRecipes()
+        {
+            bool result;
+            var response = (await firebaseDatabase.Child("Recipes").Child("Italian").OnceAsync<RecipeModel>()).Select(item => new RecipeModel()
+            {
+                Title = item.Object.Title,
+                Ingredients = item.Object.Ingredients,
+                Instructions = item.Object.Instructions,
+                Image = item.Object.Image
+
+
+            }).ToList();
+
+            if (response.Count > 0)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+
+            return result;
+
+
+        }
+    }
 
 }

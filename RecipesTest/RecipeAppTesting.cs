@@ -42,11 +42,20 @@ namespace RecipesTest
             Assert.IsTrue(result.Result);
 
         }
-
+      
         [TestMethod]
         public void getIndianRecipeTesting()
         {
             Task<bool> result = _libraryhelper.GetIndianRecipes();
+
+            Assert.IsTrue(result.Result);
+
+        }
+
+        [TestMethod]
+        public void GetitalianRecipes()
+        {
+            Task<bool> result = _libraryhelper.GetItalianRecipes();
 
             Assert.IsTrue(result.Result);
 
