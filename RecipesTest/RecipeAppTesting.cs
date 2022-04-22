@@ -42,5 +42,14 @@ namespace RecipesTest
             Assert.IsTrue(result.Result);
 
         }
+
+        [TestMethod]
+        public void getIndianRecipeTesting()
+        {
+            Task<bool> result = _libraryhelper.GetIndianRecipes();
+
+            Assert.IsTrue(result.Result);
+
+        }
     }
 }

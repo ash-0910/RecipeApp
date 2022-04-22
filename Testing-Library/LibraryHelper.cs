@@ -1,5 +1,6 @@
 ﻿using Firebase.Auth;
 using Firebase.Database;
+using Firebase.Database.Query;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -14,6 +15,8 @@ namespace Testing_Library
 {
     public class LibraryHelper
     {
+
+        FirebaseClient firebaseDatabase = new FirebaseClient("https://recipewebapp-2b062-default-rtdb.firebaseio.com/");
 
         List<Users> user = new List<Users>
         {
@@ -122,6 +125,31 @@ namespace Testing_Library
         }
 
 
+        public async Task<bool> GetIndianRecipes()
+        {
+            bool result;
+            var response = (await firebaseDatabase.Child("Recipes").Child("Indian").OnceAsync<RecipeModel>()).Select(item => new RecipeModel()
+            {
+                Title = item.Object.Title,
+                Ingredients = item.Object.Ingredients,
+                Instructions = item.Object.Instructions,
+                Image = item.Object.Image
 
-    }
+
+            }).ToList();
+
+            if(response.Count > 0)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+
+            return result;
+
+
+        }
+
 }
